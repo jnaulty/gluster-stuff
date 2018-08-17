@@ -1,0 +1,22 @@
+# setup packages and service
+yum install centos-release-gluster
+yum install -y glusterfs-server
+systemctl start glusterd
+systemctl status glusterd
+
+# 'configure' brick
+mkdir -p /bricks/brick1
+mkdir /bricks/brick1/gv0
+
+# connect to peer
+gluster peer probe gluster2
+gluster volume create gv0 replica 2 gluster1:/bricks/brick1/gv0 gluster2:/bricks/brick1/gv0 force
+gluster volume start gv0
+
+# required packages for python script on centos
+yum install epel-release -y
+yum -y install python-pip
+
+# once python utility is transferred
+pip install requirements.txt
+python gluster-list-vols.py 
