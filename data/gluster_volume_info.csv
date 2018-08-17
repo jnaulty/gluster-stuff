@@ -1,0 +1,2 @@
+name,vol_type,num_bricks,brick_names,brick_total_size,brick_free_size
+gv0,REPLICATE,2,"['gluster1:/bricks/brick1/gv0', 'gluster2:/bricks/brick1/gv0']",['40446885888'],"['39353307136', '38744580096']"
